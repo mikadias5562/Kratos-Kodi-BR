@@ -547,7 +547,7 @@ def Other(url):
 def Check_update():
 	versao='28.0'
 	Source_Update = os.path.join(home, 'Player_Kratos.py')
-	base_update = abrir_url('https://raw.githubusercontent.com/brunolojino/listas/master/Kratos_Update.txt')
+	base_update = abrir_url('https://raw.githubusercontent.com/mikadias5562/Kratos-Kodi-BR/edit/master/kratos_playermika.txt')
 	check = re.compile("versao='(.*?)'").findall(base_update)[0]
 	if versao==check:
 		pass
