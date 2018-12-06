@@ -355,7 +355,7 @@ def Pre_link_mmfilmes(url):
 		referer = [('Referer',url)]#getUrl(page_value,headers=referer)
 		a =  getUrl(url, headers=referer)
 		log(a)
-		base_mmf = 'http://www.mmfilmes.tv/'
+		base_mmf = 'http://player.mmfilmes.tv'
 		b = re.compile("addiframe.*?'(.*?)'").findall(a)[0]
 		c = getUrl(base_mmf+b, headers=referer)
 		items_url = []
@@ -390,43 +390,7 @@ def Pre_link_mmfilmes(url):
 			xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, liz)
 		else:
 			sys.exit()
-	except:
-		ref = url
-		referer = [('Referer',url)]#getUrl(page_value,headers=referer)
-		a =  getUrl(url, headers=referer)
-		items_url = []
-		items_name = []
-		match = re.compile("""{.file.:.(.*?).,.*?label.:.(.*?).(,|})""").findall(a)
-		for url,nome,t in  set(match):
-			if '360p' in url or '360p' in nome :
-				items_names = '360p'
-				items_name.append(items_names)
-				items_url.append(url)
-			elif '480p' in url or '480p' in nome :
-				items_names = '480p'
-				items_name.append(items_names)		
-				items_url.append(url)	
-			elif '720p' in url or '720p' in nome :
-				items_names = '720p'
-				items_name.append(items_names)		
-				items_url.append(url)		
-			elif '1080p' in url or '1080p' in nome :
-				items_names = '1080p'
-				items_name.append(items_names)		
-				items_url.append(url)	
-				
-		opcao = xbmcgui.Dialog().select('-=Kratos Kodi Br =-', items_name)
-		if opcao>= 0:
-			linkss = items_url[opcao] 
-			linkss+='|Referer='+ref
-			liz = xbmcgui.ListItem(name, iconImage=iconimage)
-		#	liz.setInfo(type='Video', infoLabels={'Title':name})
-		#	liz.setProperty("IsPlayable","true")
-			liz.setPath(linkss)
-			xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, liz)
-		else:
-			sys.exit()
-	
+			
 def Pre_link_seuseriado(url):
 	url = url.replace('#038;','').replace("https","http")
 	referer = [('Referer','http://seuseriado.com/')]#'https://seuseriado.com/')]#getUrl(page_value,headers=referer)
