@@ -355,7 +355,7 @@ def Pre_link_mmfilmes(url):
 		referer = [('Referer',url)]#getUrl(page_value,headers=referer)
 		a =  getUrl(url, headers=referer)
 		log(a)
-		base_mmf = 'http://a.tudoemhd.net/abcde.php'
+		base_mmf = 'http://www.mmfilmes.tv/'
 		b = re.compile("addiframe.*?'(.*?)'").findall(a)[0]
 		c = getUrl(base_mmf+b, headers=referer)
 		items_url = []
